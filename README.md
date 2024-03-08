@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
- ###  DATE: 
+ ###  DATE: 08-03-24
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT:
+###  NAME: KOUSALYA A.
+###  ROLL NO : 212222230068
+###  DEPARTMENT: ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
  
@@ -60,45 +60,65 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 ```
-
-
-
-
-
-
-
-
-
-
-`````````
+int echopin=6;
+int trigpin=7;
+int red=8;
+int green=9;
+long duration;
+float distance;
+void setup()
+{
+  pinMode(echopin,INPUT);
+  pinMode(trigpin,OUTPUT);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  digitalWrite(trigpin,LOW);
+  delay(10);
+  digitalWrite(trigpin,HIGH);
+  delay(10);
+  digitalWrite(trigpin,LOW);
+  duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print("Distance=");
+  Serial.print(distance);
+  Serial.println("cms");
+  if (distance<50)
+  {
+    digitalWrite(green, HIGH);
+    delay(500);
+    digitalWrite(green, LOW);
+    delay(500);
+  }
+  else
+  {
+    digitalWrite(red, HIGH);
+    delay(500);
+    digitalWrite(red, LOW);
+    delay(500);
+  }
+}
+```
 
 
 ### Distance vs measurement table 
+ ### When(distance<50)
+ ![image](https://github.com/Kousalya22008930/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119389108/f30fcf5f-31b8-4446-9991-6e69d5ddd566)
+### When (distance>50)
+![image](https://github.com/Kousalya22008930/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119389108/3cab1ed1-8be7-49b9-a6ef-ba166d684a47)
 
 			
- 
-			
-			
-			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
-			
-			
-			
-			
-			
+![image](https://github.com/Kousalya22008930/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119389108/56ffb7f1-851e-42f1-98f9-825b4499fd84)
 			Average error = sum/ number of readings 
  
+## Graph
+![image](https://github.com/Kousalya22008930/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/119389108/4aa3f419-8ac7-4c04-b865-8cebee44c126)
 
-
-
-
-
-
-
-
-### RESULTS
+### RESULTS:
+Thus the distance value is measured in "CM" using ultrasonic sensor
 
 
 
